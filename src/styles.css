@@ -1,0 +1,49 @@
+button {
+  background: linear-gradient(-45deg, #f11a65, rgba(35, 23, 171, 0.85), rgba(35, 213, 171, 0.85)) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 15px;
+  outline: none !important; }
+
+.text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* number of lines to show */
+  -webkit-box-orient: vertical; }
+
+.text-1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  /* number of lines to show */
+  -webkit-box-orient: vertical; }
+
+.let-ch {
+  font-family: atten-round-new, sans-serif;
+  font-weight: 400;
+  font-style: normal; }
+
+.fix-display {
+  height: 8vh; }
+
+.full-display {
+  height: 100%; }
+
+.mrg-main {
+  margin-top: 80px; }
+
+.mrg-ctn {
+  margin-top: 40px; }
+
+.mrg-end {
+  margin-bottom: 40px; }
+
+.bkg {
+  background: linear-gradient(-45deg, black, rgba(35, 23, 171, 0.85), rgba(35, 213, 171, 0.85)) !important;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite !important; }
+
+/*# sourceMappingURL=styles.css.map */

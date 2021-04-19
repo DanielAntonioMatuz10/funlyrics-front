@@ -1,0 +1,103 @@
+<app-navbar></app-navbar>
+
+<body id="body">
+<div class="mx-auto bck-main">
+
+  <!--HEADER-->
+
+  <a style="text-decoration: none!important; margin-top: 75px" class="header data-music bkg" href="https://www.youtube.com/watch?v={{video}}">
+<!--    <a href="https://www.youtube.com/watch?v={{video}}" style="position: absolute; text-decoration: none!important; color: white; margin-top: 5px; margin-left: 15px; background-color: transparent!important; padding: 10px 10px 0px 10px!important; border-radius: 15px">
+      <p class="let-ch">Ver en <span style="font-weight: 800; color: indianred">YouTube</span></p>
+    </a>-->
+    <div class="row let-ch">
+      <div class="col-7 justify-text adjust-v-h">
+        <h3 style="margin-top: 5px; margin-left: 8px; text-align: center; font-size: 20px!important;">{{nameVideo}}</h3>
+      </div>
+      <div class="col-5">
+        <img src="https://img.youtube.com/vi/{{this.video}}/maxresdefault.jpg" style="width: 90px; height: 90px; border-radius: 10px; margin-top: 5px;">
+      </div>
+    </div>
+  </a>
+
+  <!-- VIEW -->
+  <div style="position: fixed; z-index: -99; width: 100%; height: 100%" class="video-foreground">
+    <div id="player" style="width: 100%!important; height: 100%!important;"></div>
+  </div>
+
+  <!-- LETTER -->
+
+  <div class="letter container mx-auto w-75" style="text-align: center">
+    <div class="row" style="text-align: center">
+      <div class="col-12 letter-mv" style="text-align: center">
+        <p>{{lyricsDisplay}}</p>
+      </div>
+      <div class="col-12" style="text-align: center">
+        <p style="font-size: 35px; font-weight: 800; color: gold">{{lyricsTraslateDisplay}}</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- AUDIO -->
+
+  <div class="mx-auto player" style="text-align: center">
+
+    <audio id="audio-element" controls (play)="playSyncMusic()" style="visibility: hidden" >
+      <source src="" type="audio/flac">
+    </audio>
+
+    <div class="music-player">
+      <div style="float: left">
+
+        <button style="background: transparent!important;" *ngIf="!playControl" (click)="playOrPaused()" class="btn-play btn-play-style" onclick="document.getElementById('audio-element').play()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </button>
+
+        <button style="background: transparent!important;" *ngIf="playControl" (click)="playOrPaused2()" class="btn-play btn-play-style" onclick="document.getElementById('audio-element').pause()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-pause-fill" viewBox="0 0 16 16">
+            <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+          </svg>
+        </button>
+
+
+        <button class="btn-play" (click)="btnVolume()" style="background: transparent!important;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-volume-up-fill" viewBox="0 0 16 16">
+            <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+            <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+            <path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
+          </svg>
+        </button>
+        <button style="background: transparent!important;" disabled class="btn-play let-ch" >{{timeCurrentMusic}}/{{timeTotalMusic}}</button>
+      </div>
+      <div class="row">
+        <div class="col-10" style="text-align: left; margin-top: 20px; margin-left: 30px">
+          <div id="timeline">
+            <input (change)="timeSlider()" class="input-play uk-progress " id="seekslider" type="range" min="0" max="100" value="0" step="1" style="width: 100%">
+          </div>
+          <div class="ocultar-div">
+            <button *ngIf="!fullScreen" class="btn-play" (click)="openFullScreen()" style="margin-top: 4px; text-align: right;background: transparent!important;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fullscreen" viewBox="0 0 16 16">
+                <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"/>
+              </svg>
+            </button>
+            <button *ngIf="fullScreen" class="btn-play" (click)="closeFullScreen()" style="margin-top: 4px; text-align: right;background: transparent!important;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707zm4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707zm0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707zm-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: block; margin-top: -160px; margin-left: 15px;background: transparent!important;" *ngIf="volumeControl">
+    <input (change)="volumeSlider()" class="vranger input-play uk-progress " id="volume" type="range" min="0" max="100" value="{{volumeDefect}}" step="1" style="width: 150px; background-color: indianred!important;">
+  </div>
+
+</div>
+
+</body>
+

@@ -1,0 +1,149 @@
+.data-music,body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #49a09d, #5f2c82,#373B44)!important;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bck-main{
+
+  height: 100vh;
+}
+
+.header {
+  position: fixed;
+  height: 100px;
+  width: 300px;
+  background-color: white;
+  border-radius: 20px;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+#audio-element {
+  width: 100%;
+  outline: none!important;
+}
+
+.letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  font-size: 80px;
+  color: white;
+  font-family: atten-round-new, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.let-ch {
+  font-family: atten-round-new, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.justify-text {
+  word-wrap: break-word;
+  max-width:100%;
+}
+
+.adjust-v-h {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player {
+  position:absolute; /*El div será ubicado con relación a la pantalla*/
+  left:0px; /*A la derecha deje un espacio de 0px*/
+  right:0px; /*A la izquierda deje un espacio de 0px*/
+  bottom:0px; /*Abajo deje un espacio de 0px*/
+  z-index:0;
+}
+
+.data-music {
+  color: white;
+}
+
+.music-player {
+  height: 100px;
+  width: 100%;
+  background: black;
+}
+
+.btn-play {
+  background-color: transparent!important;
+  border: none!important;
+  color: white;
+  margin-left: 5px;
+  margin-top: 25px;
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
+  outline: none!important;
+}
+
+.btn-play-style {
+  color: white;
+}
+
+#timeline{
+  width: 85%;
+  height: 20px;
+  margin-top: 20px;
+  float: left;
+  border-radius: 15px;
+  position: relative;
+  background: #5f2c82;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #49a09d, #5f2c82); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.uk-progress{
+  overflow: hidden;
+  height: 20px!important;
+  -webkit-appearance: none;
+  background-color: transparent!important;
+  border-radius: 15px;
+  outline: none!important;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  width: 20px;
+  -webkit-appearance: none;
+  height: 20px;
+  cursor: ew-resize;
+  border-radius: 50%;
+  background: white;
+}
+
+.vranger {
+  margin-top: 50px;
+  transform: rotate(270deg);
+  -moz-transform: rotate(270deg); /*do same for other browsers if required*/
+}
+
+.volume-input::-webkit-slider-thumb {
+  width: 20px;
+  -webkit-appearance: none;
+  height: 20px;
+  cursor: ew-resize;
+  border-radius: 50%;
+  background: white!important;
+}
+

@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+
+<body id="body">
+<div id="main" class="mx-auto bck-main bkg-alternative">
+
+  <!--HEADER-->
+
+  <a style="text-decoration: none!important; margin-top: 75px" class="header data-music bkg" href="https://www.youtube.com/watch?v={{video}}">
+    <!--    <a href="https://www.youtube.com/watch?v={{video}}" style="position: absolute; text-decoration: none!important; color: white; margin-top: 5px; margin-left: 15px; background-color: transparent!important; padding: 10px 10px 0px 10px!important; border-radius: 15px">
+          <p class="let-ch">Ver en <span style="font-weight: 800; color: indianred">YouTube</span></p>
+        </a>-->
+    <div class="row let-ch">
+      <div style="margin-top: 25px" class="col-12 justify-text adjust-v-h text color-wh">
+        <h3 style="margin-top: 5px; margin-left: 8px; text-align: center; font-size: 20px!important;">{{nameVideo}}</h3>
+      </div>
+    </div>
+  </a>
+
+  <!-- VIEW -->
+  <div style="position: fixed; z-index: -99; width: 100%; height: 100%" class="video-foreground">
+    <div id="core-data" style="height: 100%">
+      <div id="player" style="width: 100%!important; height: 100%!important;"></div>
+    </div>
+  </div>
+
+  <!-- LETTER -->
+
+  <div class="letter container mx-auto w-75" style="text-align: center">
+    <div class="row" style="text-align: center">
+      <div class="col-12 letter-mv" style="text-align: center">
+        <p>{{lyricsDisplay}}</p>
+      </div>
+      <div class="col-12" style="text-align: center">
+        <p style="font-size: 35px; font-weight: 800; color: gold">{{lyricsTraslateDisplay}}</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!--CORE -->
+
+  <audio id="audio-element" controls (play)="playSyncMusic()" style="visibility: hidden" >
+    <source src="" type="audio/flac">
+  </audio>
+
+  <!-- Controles -->
+
+  <div class="player centered w-75" style=" background-color: #373B44;">
+    <div style="height: 60px;margin-top: 25px">
+      <div class="row" style="text-align: center;">
+        <button (click)="nextContent()" class="col-4 color-wh" style="text-align: center; background: transparent!important;" onclick="document.getElementById('audio-element').play()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-90deg-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.854 14.854a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V3.5A2.5 2.5 0 0 1 6.5 1h8a.5.5 0 0 1 0 1h-8A1.5 1.5 0 0 0 5 3.5v9.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4z"/>
+          </svg>
+        </button>
+
+        <button *ngIf="!playAction" (click)="playOrPaused()" class="col-4 color-wh" style="text-align: center;background: transparent!important;" onclick="document.getElementById('audio-element').play()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+            <path d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+          </svg>
+        </button>
+
+        <button *ngIf="playAction" (click)="playOrPaused2()" class="col-4 color-wh" style="text-align: center;background: transparent!important;" onclick="document.getElementById('audio-element').pause()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-pause" viewBox="0 0 16 16">
+            <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"/>
+          </svg>
+        </button>
+
+        <button (click)="backContent()" class="col-4 color-wh" style="text-align: center;background: transparent!important;" onclick="document.getElementById('audio-element').play()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-90deg-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.854 1.146a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L4 2.707V12.5A2.5 2.5 0 0 0 6.5 15h8a.5.5 0 0 0 0-1h-8A1.5 1.5 0 0 1 5 12.5V2.707l3.146 3.147a.5.5 0 1 0 .708-.708l-4-4z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+
