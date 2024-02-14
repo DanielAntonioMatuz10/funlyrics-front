@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {any} from 'codelyzer/util/function';
+// import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-yt',
@@ -161,7 +161,7 @@ export class YtComponent implements OnInit {
 
   init() {
     var tag = document.createElement('script');
-    tag.src = 'http://www.youtube.com/iframe_api';
+    tag.src = 'https://www.youtube.com/iframe_api';
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     window['onYouTubeIframeAPIReady'] = () => this.startVideo();

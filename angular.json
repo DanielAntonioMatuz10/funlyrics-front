@@ -25,7 +25,22 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              },
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.scss"
@@ -66,18 +81,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "MusicLetter:build"
+            "buildTarget": "MusicLetter:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "MusicLetter:build:production"
+              "buildTarget": "MusicLetter:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "MusicLetter:build"
+            "buildTarget": "MusicLetter:build"
           }
         },
         "test": {

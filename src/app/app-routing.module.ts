@@ -18,10 +18,11 @@ const routes: Routes = [
   {path:'lyrics/sync', component: SyncComponent},
   {path: 'watchfun', component: WatchfunComponent},
   {path: 'my-funsync', component: MyFunsyncComponent},
-  {path: '', component: IndexComponent},
+  {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'search', component: SearchComponent},
-  {path: 'home', component: HomeComponent}
+  {path: 'home', component: HomeComponent},
+
 ];
 
 @NgModule({

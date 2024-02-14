@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  public active: boolean = true;
+
   constructor() { }
 
   public sign_in_btn = document.querySelector("#sign-in-btn");
@@ -17,10 +19,16 @@ export class LoginComponent implements OnInit {
   }
 
   sign_up() {
+    setTimeout(() => {
+      this.active = false;
+    }, 1200);
     document.getElementById("container").classList.add('sign-up-mode');
   }
 
   sign_in() {
+    setTimeout(() => {
+      this.active = true;
+    }, 1200);
     document.getElementById("container").classList.remove('sign-up-mode');
   }
 
